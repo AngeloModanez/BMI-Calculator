@@ -1,18 +1,79 @@
-<input
-  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-  type="number"
-  [(ngModel)]="weight"
-  placeholder="kg"
-  maxlength="5"
-/>
-<input
-  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-  type="number"
-  [(ngModel)]="height"
-  placeholder="in cm"
-  maxlength="4"
-/>
-<button (click)="calcBmi(bmi)">Calcular</button>
-<h2>{{msg}}</h2>
+<div style="margin: 3%; width: 50rem" class="container-fluid text-justify">
+  <div
+    style="padding: 1.5rem; background-color: rgb(202, 230, 255)"
+    class="card"
+  >
+    <h1 style="color: rgb(203, 29, 102)">BMI - Calculator MAX Pro 2.0</h1>
+    <div style="margin-bottom: 1rem; padding: 1rem" class="card">
+      <label style="margin: 5px" for="">Weight in KG:</label>
+      <input
+        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        type="number"
+        maxlength="3"
+        [(ngModel)]="weight"
+        class="form-control"
+        placeholder="example: 87"
+      />
 
-<i class="bi bi-star-fill"></i>
+      <br />
+
+      <label style="margin: 5px" for="">Height in Meters:</label>
+      <input
+        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        type="number"
+        maxlength="4"
+        [(ngModel)]="height"
+        class="form-control"
+        placeholder="example: 1,80"
+      />
+    </div>
+    <div>
+      <button
+        style="height: 3rem; width: 45%"
+        (click)="calcBmi(bmi)"
+        class="btn btn-danger"
+      >
+        Calculate
+      </button>
+      <button
+        style="height: 3rem; width: 45%"
+        (click)="calcBmi(bmi)"
+        class="btn btn-danger"
+      >
+        Calculate
+      </button>
+      <h2>{{ msg }}</h2>
+    </div>
+  </div>
+
+  <!--
+<form style="margin: 2%; width: 90%" class="container-fluid text-justify">
+  <h1>BMI - Calculator</h1>
+  <div class="row">
+    <div class="row">
+      <label for="">Weight in KG:</label>
+      <input
+        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        type="number"
+        maxlength="3"
+        [(ngModel)]="weight"
+        class="form-control"
+        placeholder="(example: 73)"
+      />
+    </div>
+    <div class="row">
+
+      <label for="">Height in meters:</label>
+      <input
+        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        type="number"
+        maxlength="3"
+        [(ngModel)]="height"
+        class="form-control"
+        placeholder="(example: 1.76)"
+      />
+    </div>
+    <button (click)="bmicalc" style="margin-top: 2%" class="btn btn-warning">Calculate</button>
+  </div>
+</form> -->
+</div>
