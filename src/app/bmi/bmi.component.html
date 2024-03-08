@@ -2,16 +2,17 @@
   oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
   type="number"
   [(ngModel)]="weight"
-  placeholder="Weight"
+  placeholder="kg"
   maxlength="5"
 />
 <input
   oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
   type="number"
   [(ngModel)]="height"
-  placeholder="Height"
-  maxlength="3"
+  placeholder="in cm"
+  maxlength="4"
 />
+<button (click)="calcBmi(bmi)">Calcular</button>
+<h2>{{msg}}</h2>
 
-<button (click)="bmicalc()">Test</button>
-{{ bmi }}
+<i class="bi bi-star-fill"></i>
