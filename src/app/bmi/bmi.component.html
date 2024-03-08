@@ -1,0 +1,17 @@
+<input
+  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+  type="number"
+  [(ngModel)]="weight"
+  placeholder="Weight"
+  maxlength="5"
+/>
+<input
+  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+  type="number"
+  [(ngModel)]="height"
+  placeholder="Height"
+  maxlength="3"
+/>
+
+<button (click)="bmicalc()">Test</button>
+{{ bmi }}
