@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { inject, TemplateRef } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-bmi',
@@ -6,30 +8,64 @@ import { Component } from '@angular/core';
   styleUrl: './bmi.component.css',
 })
 export class BmiComponent {
-  weight: any;
-  height: any;
-  bmi: any;
-  msg: string = '';
+  private modalService = inject(NgbModal);
 
-  calcBmi(bmi: number) {
+  age: any = '';
+  weight: any = '';
+  height: any = '';
+  name: any = '';
+  bmi: any;
+
+  // error: string = 'ERROR: FILL THE FORM'
+  // openCleanError(content: TemplateRef<any>) {
+  //   if (this.weight == '' && this.height == ''){
+  //     this.modalService.open(content, { backdropClass: 'light-blue-backdrop' });
+  //   } else{
+  //     this.height = '';
+  //     this.weight = '';
+  //   }
+  // }
+
+  clean() {
+    this.height = '';
+    this.weight = '';
+  }
+
+  calcBmi(bmi: number, content: TemplateRef<any>) {
+    this.modalService.open(content, { backdropClass: 'light-blue-backdrop' });
+    if (this.name == '' || this.weight == '' || this.height == '')
+      this.bmi = 'ERROR: PLEASE FILL THE FORM';
+
+    if (this.height > 5) {
+      this.height = this.height / 100;
+    }
     bmi = this.weight / (this.height * this.height);
 
-    if (bmi < 16) {
-      this.msg = 'BMI = ' + bmi.toFixed(1) + 'kg/m2 (Severe Thinness)';
-    } else if (bmi >= 16 && bmi < 17) {
-      this.msg = 'BMI = ' + bmi.toFixed(1) + 'kg/m2 (Moderate Thinness)';
-    } else if (bmi >= 17 && bmi < 18.5) {
-      this.msg = 'BMI = ' + bmi.toFixed(1) + 'kg/m2 (Mild Thinness)';
-    } else if (bmi >= 18.5 && bmi < 25) {
-      this.msg = 'BMI = ' + bmi.toFixed(1) + ' kg/m2 (Normal)';
-    } else if (bmi >= 25 && bmi < 30) {
-      this.msg = 'BMI = ' + bmi.toFixed(1) + 'kg/m2 (Overweight)';
-    } else if (bmi >= 30 && bmi < 35) {
-      this.msg = 'BMI = ' + bmi.toFixed(1) + 'kg/m2 (Obese Class I)';
-    } else if (bmi >= 35 && bmi < 40) {
-      this.msg = 'BMI = ' + bmi.toFixed(1) + 'kg/m2 (Obese Class II)';
-    } else if (bmi >= 40) {
-      this.msg = 'BMI = ' + bmi.toFixed(1) + 'kg/m2 (Obese Class III)';
+    switch (true) {
+      case bmi < 16:
+        this.bmi = bmi.toFixed(1) + 'kg/m2 (Severe Thinness)';
+        break;
+      case bmi < 17:
+        this.bmi = bmi.toFixed(1) + 'kg/m2 (Moderate Thinness)';
+        break;
+      case bmi < 18.5:
+        this.bmi = bmi.toFixed(1) + 'kg/m2 (Mild Thinness)';
+        break;
+      case bmi < 25:
+        this.bmi = bmi.toFixed(1) + 'kg/m2 (Nomal)';
+        break;
+      case bmi < 30:
+        this.bmi = bmi.toFixed(1) + 'kg/m2 (Overweight)';
+        break;
+      case bmi < 35:
+        this.bmi = bmi.toFixed(1) + 'kg/m2 (Obese Class I)';
+        break;
+      case bmi < 40:
+        this.bmi = bmi.toFixed(1) + 'kg/m2 (Obese Class II)';
+        break;
+      case bmi >= 40:
+        this.bmi = bmi.toFixed(1) + 'kg/m2 (Obese Class III)';
+        break;
     }
   }
 }

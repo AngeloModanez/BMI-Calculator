@@ -1,3 +1,8 @@
-::placeholder {
-  color: white;
+button {
+  width: 45%;
+  padding: 0.5rem;
+}
+
+h5{
+  margin-bottom: 0.4rem;
 }

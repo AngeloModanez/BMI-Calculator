@@ -1,79 +1,98 @@
-<div style="margin: 3%; width: 50rem" class="container-fluid text-justify">
+<div
+  style="width: 50rem; margin-top: 2%; margin-bottom: 2%"
+  class="container-fluid"
+>
   <div
-    style="padding: 1.5rem; background-color: rgb(202, 230, 255)"
+    style="
+      background-color: rgb(198, 226, 249);
+      margin-bottom: 2rem;
+      padding: 2rem;
+    "
     class="card"
   >
-    <h1 style="color: rgb(203, 29, 102)">BMI - Calculator MAX Pro 2.0</h1>
-    <div style="margin-bottom: 1rem; padding: 1rem" class="card">
-      <label style="margin: 5px" for="">Weight in KG:</label>
-      <input
-        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-        type="number"
-        maxlength="3"
-        [(ngModel)]="weight"
-        class="form-control"
-        placeholder="example: 87"
-      />
+    <div class="text-center">
+      <h1 style="color: rgb(195, 57, 57)">BMI - Calculator MAX Pro 2.0</h1>
+    </div>
+    <br />
 
+    <div style="margin-bottom: 0.5rem; padding: 2rem" class="card">
+      <div style="display: flex">
+        <div style="width: 45%">
+          <h5>Name:</h5>
+          <input
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+            type="string"
+            maxlength="15"
+            [(ngModel)]="name"
+            class="form-control"
+            placeholder="First Name:"
+          />
+        </div>
+        <div style="margin-left: 10%; width: 45%">
+          <h5>Age:</h5>
+          <input
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+            type="number"
+            maxlength="3"
+            [(ngModel)]="age"
+            class="form-control"
+            placeholder="Age:"
+          />
+        </div>
+      </div>
       <br />
 
-      <label style="margin: 5px" for="">Height in Meters:</label>
-      <input
-        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-        type="number"
-        maxlength="4"
-        [(ngModel)]="height"
-        class="form-control"
-        placeholder="example: 1,80"
-      />
-    </div>
-    <div>
-      <button
-        style="height: 3rem; width: 45%"
-        (click)="calcBmi(bmi)"
-        class="btn btn-danger"
-      >
-        Calculate
-      </button>
-      <button
-        style="height: 3rem; width: 45%"
-        (click)="calcBmi(bmi)"
-        class="btn btn-danger"
-      >
-        Calculate
-      </button>
-      <h2>{{ msg }}</h2>
+      <div>
+        <h5>Height:</h5>
+        <input
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+          type="number"
+          maxlength="3"
+          [(ngModel)]="height"
+          class="form-control"
+          placeholder="Height in M:"
+        />
+      </div>
+      <br />
+
+      <div>
+        <h5>Weight:</h5>
+        <input
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+          type="number"
+          maxlength="3"
+          [(ngModel)]="weight"
+          class="form-control"
+          placeholder="Weight in Kg:"
+        />
+      </div>
+      <br />
+
+      <div>
+        <button (click)="calcBmi(bmi, content)" class="btn btn-danger">
+          Calculate
+        </button>
+        <button style="float: right" (click)="clean()" class="btn btn-danger">
+          Clear
+        </button>
+      </div>
     </div>
   </div>
 
-  <!--
-<form style="margin: 2%; width: 90%" class="container-fluid text-justify">
-  <h1>BMI - Calculator</h1>
-  <div class="row">
-    <div class="row">
-      <label for="">Weight in KG:</label>
-      <input
-        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-        type="number"
-        maxlength="3"
-        [(ngModel)]="weight"
-        class="form-control"
-        placeholder="(example: 73)"
-      />
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title">{{ name }} <br> MBI: {{ bmi }}</h5>
+      <h4></h4>
+      <button
+        style="width: 20px;"
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      ></button>
     </div>
-    <div class="row">
-
-      <label for="">Height in meters:</label>
-      <input
-        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-        type="number"
-        maxlength="3"
-        [(ngModel)]="height"
-        class="form-control"
-        placeholder="(example: 1.76)"
-      />
+    <div class="modal-body">
+      FOTO GIGANTE
     </div>
-    <button (click)="bmicalc" style="margin-top: 2%" class="btn btn-warning">Calculate</button>
-  </div>
-</form> -->
+  </ng-template>
 </div>
