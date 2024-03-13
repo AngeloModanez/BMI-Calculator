@@ -16,29 +16,16 @@
     <br />
 
     <div style="margin-bottom: 0.5rem; padding: 2rem" class="card">
-      <div style="display: flex">
-        <div style="width: 45%">
-          <h5>Name:</h5>
-          <input
-            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-            type="string"
-            maxlength="15"
-            [(ngModel)]="name"
-            class="form-control"
-            placeholder="First Name:"
-          />
-        </div>
-        <div style="margin-left: 10%; width: 45%">
-          <h5>Age:</h5>
-          <input
-            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-            type="number"
-            maxlength="3"
-            [(ngModel)]="age"
-            class="form-control"
-            placeholder="Age:"
-          />
-        </div>
+      <div>
+        <h5>Name:</h5>
+        <input
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+          type="string"
+          maxlength="15"
+          [(ngModel)]="name"
+          class="form-control"
+          placeholder="First Name:"
+        />
       </div>
       <br />
 
@@ -50,7 +37,7 @@
           maxlength="3"
           [(ngModel)]="height"
           class="form-control"
-          placeholder="Height in M:"
+          placeholder="Height in Meters:"
         />
       </div>
       <br />
@@ -66,7 +53,7 @@
           placeholder="Weight in Kg:"
         />
       </div>
-      <br />
+      <br /><br />
 
       <div>
         <button (click)="calcBmi(bmi, content)" class="btn btn-danger">
@@ -81,10 +68,25 @@
 
   <ng-template #content let-modal>
     <div class="modal-header">
-      <h3 class="modal-title">{{name}}'s MBI:</h3>
-      <h4></h4>
+      <h3 class="modal-title">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36"
+          height="36"
+          fill="currentColor"
+          class="bi bi-person-circle"
+          viewBox="0 0 16 16"
+        >
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+          <path
+            fill-rule="evenodd"
+            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+          />
+        </svg>
+        {{ name }}'s MBI:
+      </h3>
       <button
-        style="width: 20px;"
+        style="width: 20px"
         type="button"
         class="btn-close"
         aria-label="Close"
@@ -92,7 +94,15 @@
       ></button>
     </div>
     <div class="modal-body">
-      {{bmi}}
+      <img
+        id="img"
+        [src]="imgPath"
+        class="img-responsive rounded embed-responsive-item img-fluid"
+      />
+      <br /><br />
+      <ngb-alert [dismissible]="false">
+        <strong>{{ bmi }}</strong>
+      </ngb-alert>
     </div>
   </ng-template>
 </div>
