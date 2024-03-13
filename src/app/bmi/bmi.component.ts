@@ -27,11 +27,13 @@ export class BmiComponent {
   // }
 
   clean() {
+    this.age = '';
+    this.name = '';
     this.height = '';
     this.weight = '';
   }
 
-  calcBmi(bmi: number, content: TemplateRef<any>) {
+  calcBmi(bmi: number, content: TemplateRef<any>,) {
     this.modalService.open(content, { backdropClass: 'light-blue-backdrop' });
     if (this.name == '' || this.weight == '' || this.height == '')
       this.bmi = 'ERROR: PLEASE FILL THE FORM';
